@@ -68,16 +68,44 @@ function parseStory(rawStory) {
 }
 const createTextEdit = (arr) => {
   const editDOM = document.querySelector(".madLibsEdit")
-  const paragraph = document.createElement("p")
-  const idCount = 0
+  const previewDOM = document.querySelector(".madLibsPreview")
+  const span = document.createElement("span")
+  const blank = document.createElement("span")
+  blank.innerText = "______"
+  // previewDOM.appendChild(paragraph)
+  // editDOM.appendChild()
+  let idCount = 0
   arr.forEach(item => {
     if (item.pos) {
+      console.log("inputoluşturuldu")
       const Input = document.createElement("input");
-      Input.setAttribute(maxlenght, 20)
-      Input.setAttribute(id, idCount++)
+      Input.setAttribute("maxlength", "20")
+      Input.setAttribute("id", `${idCount++}`)
+      Input.setAttribute("placeholder", item.pos)
+      Input.classList.add("inputs")
+      previewDOM.appendChild(blank)
+      span.innerText += ` ${item.word} `
+      editDOM.appendChild(span)
+      editDOM.appendChild(Input)
+
+    }
+    else {
+      span.innerText += ` ${item.word} `
+      console.log(item.word)
+
+      editDOM.appendChild(span)
+      previewDOM.appendChild(span)
     }
   })
 }
+const soundInput = document.querySelectorAll('.inputs');
+const music = document.querySelector('#music');
+soundInput.forEach((input) =>
+  input.addEventListener('focus', () => {
+    music.setAttribute('src', "sounds/monkey.mp3");
+    document.body.appendChild(music);
+  })
+);
 
 /**
  * All your other JavaScript code goes here, inside the function. Don't worry about
@@ -87,4 +115,6 @@ const createTextEdit = (arr) => {
  */
 getRawStory().then(parseStory).then((processedStory) => {
   console.log(processedStory);
+  createTextEdit(processedStory)
 })
+
