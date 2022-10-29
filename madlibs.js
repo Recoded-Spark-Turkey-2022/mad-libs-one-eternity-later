@@ -96,14 +96,17 @@ const createTextEdit = (arr) => {
     }
   })
 }
-const soundInput = document.querySelectorAll('.inputs');
-const music = document.querySelector('#music');
-soundInput.forEach((input) =>
-  input.addEventListener('focus', () => {
-    music.setAttribute('src', "sounds/monkey.mp3");
-    document.body.appendChild(music);
-  })
-);
+function addMusic() {
+  const soundInput = document.querySelectorAll('.inputs');
+  const music = document.querySelector('#music');
+  console.log(soundInput)
+  soundInput.forEach((input) =>
+    input.addEventListener('click', () => {
+      music.setAttribute('src', "sounds/monkey.mp3");
+      document.body.appendChild(music);
+    })
+  );
+}
 
 /**
  * All your other JavaScript code goes here, inside the function. Don't worry about
@@ -114,5 +117,6 @@ soundInput.forEach((input) =>
 getRawStory().then(parseStory).then((processedStory) => {
   console.log(processedStory);
   createTextEdit(processedStory)
+  addMusic()
 })
 
