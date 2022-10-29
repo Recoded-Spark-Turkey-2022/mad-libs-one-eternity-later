@@ -70,31 +70,29 @@ const createTextEdit = (arr) => {
   const editDOM = document.querySelector(".madLibsEdit")
   const previewDOM = document.querySelector(".madLibsPreview")
   const span = document.createElement("span")
-  const blank = document.createElement("span")
-  blank.innerText = "______"
+
   // previewDOM.appendChild(paragraph)
   // editDOM.appendChild()
   let idCount = 0
   arr.forEach(item => {
     if (item.pos) {
-      console.log("inputoluşturuldu")
       const Input = document.createElement("input");
       Input.setAttribute("maxlength", "20")
       Input.setAttribute("id", `${idCount++}`)
       Input.setAttribute("placeholder", item.pos)
       Input.classList.add("inputs")
+      const blank = document.createElement("p")
+      blank.innerHTML = `______`
       previewDOM.appendChild(blank)
-      span.innerText += ` ${item.word} `
-      editDOM.appendChild(span)
+      // editDOM.innerHTML += Input
+      // editDOM.appendChild(span)
       editDOM.appendChild(Input)
 
     }
     else {
       span.innerText += ` ${item.word} `
-      console.log(item.word)
-
-      editDOM.appendChild(span)
-      previewDOM.appendChild(span)
+      editDOM.append(` ${item.word} `)
+      previewDOM.append(` ${item.word} `)
     }
   })
 }
