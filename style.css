@@ -1,3 +1,112 @@
-/**
- * Your CSS goes here.
- */
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  background: url('./images/JORBA-Blog-Banner-34.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+h1 {
+  background-image: linear-gradient(#ee932a, #74c58d);
+  font-weight: bolder;
+  font-size: 3vw;
+  font-family: 'Amatic SC', cursive;
+  margin: 3%;
+  padding: 1%;
+  border-radius: 5%;
+  opacity: 0.8;
+  color: #012c00;
+}
+h4 {
+  font-weight: bolder;
+  font-family: 'Amatic SC', cursive;
+  margin: 1vw;
+  margin-top: 3vw;
+  padding: 0.5vw;
+  background-color: white;
+  color: #012c00;
+  opacity: 0.8;
+  font-size: 1vw;
+}
+
+.madLibsEdit,
+.madLibsPreview {
+  height: 28vw;
+  width: 50%;
+  line-height: 2vw;
+  margin: 1%;
+  padding: 2%;
+  background-image: linear-gradient(#ee932a, #74c58d);
+  opacity: 0.8;
+  color: #012c00;
+  font-weight: bolder;
+  font-size: 1.5vw;
+  font-family: 'Amatic SC', cursive;
+  border-radius: 5%;
+}
+
+.madLibsPreview p {
+  display: inline;
+}
+
+.madLibsPreview {
+  line-height: 3vw;
+}
+
+.inputs {
+  border: none;
+  margin: 0.25vw;
+  padding: 0.25vw;
+  border-radius: 2vw;
+  background-color: #823701;
+  color: white;
+  font-size: 1vw;
+}
+.inputs::placeholder {
+  text-align: center;
+  color: white;
+  font-size: 1vw;
+}
+.inputs:focus {
+  outline-color: #012c00;
+  outline-width: 1vw;
+  outline-offset: 0.25vw;
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .madLibsEdit,
+  .madLibsPreview {
+    height: 60vw;
+    width: 75%;
+    font-size: 3.8vw;
+    line-height: 100%;
+    margin: 2vw;
+    padding: 3%;
+  }
+  .inputs {
+    height: 4vw;
+  }
+  .inputs::placeholder {
+    font-size: 2vw;
+  }
+}
