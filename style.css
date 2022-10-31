@@ -19,7 +19,11 @@ body {
   display: flex;
   flex-direction: row;
 }
-
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 1vw;
+}
 h1 {
   background-image: linear-gradient(#ee932a, #74c58d);
   font-weight: bolder;
@@ -34,9 +38,8 @@ h1 {
 h4 {
   font-weight: bolder;
   font-family: 'Amatic SC', cursive;
-  margin: 1vw;
-  margin-top: 3vw;
   padding: 0.5vw;
+  margin: 1vw;
   background-color: white;
   color: #012c00;
   opacity: 0.8;
@@ -88,6 +91,31 @@ h4 {
   outline-offset: 0.25vw;
 }
 
+#clear {
+  background-image: linear-gradient(#ee932a, #74c58d);
+  font-weight: bolder;
+  font-size: 1vw;
+  font-family: 'Amatic SC', cursive;
+  margin: 1%;
+  padding: 5%;
+  border-radius: 2rem;
+  opacity: 0.8;
+  color: #012c00;
+  cursor: pointer;
+}
+
+#save {
+  background-image: linear-gradient(#ee932a, #74c58d);
+  font-weight: bolder;
+  font-size: 1vw;
+  font-family: 'Amatic SC', cursive;
+  margin: 1%;
+  padding: 1%;
+  border-radius: 2rem;
+  opacity: 0.8;
+  color: #012c00;
+  cursor: pointer;
+}
 @media screen and (max-width: 767px) {
   .container {
     display: flex;

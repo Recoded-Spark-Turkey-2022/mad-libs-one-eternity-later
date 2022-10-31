@@ -80,6 +80,7 @@ const createTextEdit = (arr) => {
       Input.setAttribute('value', '');
       Input.classList.add('inputs');
       const blank = document.createElement('p');
+      blank.classList.add('blanks');
       blank.innerHTML = `______`;
       previewDOM.appendChild(blank);
       // editDOM.innerHTML += Input
@@ -116,6 +117,51 @@ function changeInputsBackground() {
   });
 }
 
+function change() {
+  document.querySelectorAll(`.inputs`).forEach((input, index) => {
+    input.addEventListener('input', (e) => {
+      document.querySelectorAll('.blanks')[index].innerHTML = e.target.value;
+      if (e.target.value.length === 0) {
+        document.querySelectorAll('.blanks')[index].innerHTML = `______`;
+      }
+    });
+  });
+}
+
+function clear() {
+  const btn = document.querySelector('#clear');
+  btn.addEventListener('click', () => {
+    document.querySelectorAll(`.inputs`).forEach((input) => {
+      input.value = '';
+      input.style.backgroundColor = '#823701';
+      localStorage.clear();
+    });
+    document
+      .querySelectorAll('.blanks')
+      .forEach((blank) => (blank.innerHTML = `______`));
+  });
+}
+
+const savedDatas = () => {
+  const saveBtn = document.querySelector('#save');
+  saveBtn.addEventListener('click', () => {
+    const savedDatasArr = [];
+    document
+      .querySelectorAll(`.inputs`)
+      .forEach((input) => savedDatasArr.push(input.value));
+    localStorage.setItem('savedValues', JSON.stringify(savedDatasArr));
+  });
+};
+
+const getDatas = () => {
+  const localStoragedDatas = ('local', localStorage.getItem('savedValues'));
+  const inputs = document.querySelectorAll(`.inputs`);
+  const blanks = document.querySelectorAll('.blanks');
+  for (let i = 0; i < inputs.length; i++) {
+    inputs[i].value = JSON.parse(localStoragedDatas)[i];
+    blanks[i].innerText = JSON.parse(localStoragedDatas)[i];
+  }
+};
 /**
  * All your other JavaScript code goes here, inside the function. Don't worry about
  * the `then` and `async` syntax for now.
@@ -128,4 +174,8 @@ getRawStory()
     createTextEdit(processedStory);
     addMusic();
     changeInputsBackground();
+    change();
+    clear();
+    savedDatas();
+    getDatas();
   });
