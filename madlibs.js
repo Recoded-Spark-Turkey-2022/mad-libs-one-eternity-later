@@ -66,16 +66,10 @@ function parseStory(rawStory) {
 const createTextEdit = (arr) => {
   const editDOM = document.querySelector('.madLibsEdit');
   const previewDOM = document.querySelector('.madLibsPreview');
-  const span = document.createElement('span');
-
-  // previewDOM.appendChild(paragraph)
-  // editDOM.appendChild()
-  let idCount = 0;
   arr.forEach((item) => {
     if (item.pos) {
       const Input = document.createElement('input');
       Input.setAttribute('maxlength', '20');
-      Input.setAttribute('id', `${idCount++}`);
       Input.setAttribute('placeholder', item.pos);
       Input.setAttribute('value', '');
       Input.classList.add('inputs');
@@ -83,11 +77,8 @@ const createTextEdit = (arr) => {
       blank.classList.add('blanks');
       blank.innerHTML = `______`;
       previewDOM.appendChild(blank);
-      // editDOM.innerHTML += Input
-      // editDOM.appendChild(span)
       editDOM.appendChild(Input);
     } else {
-      span.innerText += ` ${item.word} `;
       editDOM.append(` ${item.word} `);
       previewDOM.append(` ${item.word} `);
     }
@@ -107,7 +98,7 @@ function addMusic() {
 function changeInputsBackground() {
   myInputs = document.querySelectorAll('.inputs');
   myInputs.forEach((input) => {
-    input.addEventListener('input', (event) => {
+    input.addEventListener('input', () => {
       if (input.value !== '') {
         input.style.backgroundColor = '#012c00';
       } else {
